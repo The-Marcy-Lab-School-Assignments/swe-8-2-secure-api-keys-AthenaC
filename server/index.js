@@ -33,7 +33,10 @@ const serveGifs = async (req, res, next) => {
     // This is pretty standard fetching logic
     const response = await fetch(url);
     const data = await response.json();
-    const storiesWithTitle = data.results.filter((story) => story.title);
+    const gifs = data.data.map((gif) => ({
+      title: gif.title,
+      url: gif.images.original.url,
+    }));
 
     // send the fetched data to the client
     res.send(gifs);
@@ -46,6 +49,7 @@ const serveGifs = async (req, res, next) => {
 // Then, we make that controller available with an endpoint
 app.get("/api/gifs", serveGifs);
 
+app.use(logRoutes);
 app.use(serveStatic);
 
 //////////////////////////
