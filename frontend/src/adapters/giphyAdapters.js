@@ -1,12 +1,10 @@
-import { handleFetch } from './handleFetch.js'
+import { handleFetch } from "./handleFetch.js";
 
-const API_KEY = 'How can I include this without exposing it to the public?'
+// const API_KEY = process.env.API_KEY;
 
 // Send a fetch request to the /trending endpoint and return the top 3 results
 export const getTrendingGifs = async () => {
-  return await handleFetch(`https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=3`)
-}
+  return await handleFetch("/api/gifs");
+};
 
-export const getGifsBySearch = async (searchTerm) => {
-
-}
+export const getGifsBySearch = async (searchTerm) => {};
